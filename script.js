@@ -1,7 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("#form");
     form.addEventListener("submit", validate);
+
+    const email = document.querySelector("#email");
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const error = document.querySelector(".error");
+    const emailError = document.querySelector(".email-error");
+    email.addEventListener("input", () => {
+        const value = email.value.trim();
+        if (value === "") {
+            emailError.textContent = ""; // Don't show message on empty input
+        } else if (!emailPattern.test(value)) {
+            emailError.textContent = "Invalid email address";
+        } else {
+            emailError.textContent = "";
+        }
+    });
+
     const closeButton = document.querySelector(".close-button");
     closeButton.addEventListener("click", () => {
         error.style.display = "none";
