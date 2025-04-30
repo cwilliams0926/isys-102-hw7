@@ -52,7 +52,7 @@ function validate(event) {
     }
     if(!emailPattern.test(email.value.trim())) {
         const errorItem = document.createElement("li");
-        errorItem.textContent = "Invalid Email";
+        errorItem.textContent = "Invalid email";
         errorList.appendChild(errorItem);
         hasErrors = true;
     }
