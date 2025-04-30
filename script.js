@@ -9,24 +9,36 @@ function validate(event) {
     const password = document.querySelector("#password");
     const confirm = document.querySelector("#confirm");
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    const errorList = document.querySelector(".error-list");
     if(username.value.trim() === "") {
         event.preventDefault();
-        alert("username cannot be null")
+        const errorItem = document.createElement("li");
+        errorItem.textContent = "Username cannot be empty";
+        errorList.appendChild(errorItem);
     }
-    else if(email.value.trim() === "") {
+    if(email.value.trim() === "") {
         event.preventDefault();
-        alert("email cannot be null")
+        const errorItem = document.createElement("li");
+        errorItem.textContent = "Email cannot be empty";
+        errorList.appendChild(errorItem);
     }
-    else if(!emailPattern.test(email.value.trim())) {
+    if(!emailPattern.test(email.value.trim())) {
         event.preventDefault();
-        alert("email must be valid")
+        const errorItem = document.createElement("li");
+        errorItem.textContent = "Invalid Email";
+        errorList.appendChild(errorItem);
     }
-    else if(password.value.length < 6) {
+    if(password.value.length < 6) {
         event.preventDefault();
-        alert("password must be > 6 char")
+        const errorItem = document.createElement("li");
+        errorItem.textContent = "Password must be greater than six characters";
+        errorList.appendChild(errorItem);
     }
-    else if(password.value !== confirm.value) {
+    if(password.value !== confirm.value) {
         event.preventDefault();
-        alert("confirm doesn't match")
+        const errorItem = document.createElement("li");
+        errorItem.textContent = "Passwords don't match";
+        errorList.appendChild(errorItem);
     }
 }
