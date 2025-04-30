@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Validate the form
     const form = document.querySelector("#form");
     form.addEventListener("submit", validate);
 
+    // Validate the email input
     const email = document.querySelector("#email");
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const error = document.querySelector(".error");
@@ -17,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Button to close error message
     const closeButton = document.querySelector(".close-button");
     closeButton.addEventListener("click", () => {
         error.style.display = "none";
@@ -28,11 +31,12 @@ function validate(event) {
     const email = document.querySelector("#email");
     const password = document.querySelector("#password");
     const confirm = document.querySelector("#confirm");
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ //RegEx for email
 
     const error = document.querySelector(".error");
     const errorList = document.querySelector(".error-list");
 
+    // Remove previous error list
     errorList.innerHTML = "";
     error.style.display = "none";
 
@@ -69,6 +73,7 @@ function validate(event) {
         hasErrors = true;
     }
 
+    // If there are errors, prevent submitting
     if(hasErrors) {
         event.preventDefault();
         error.style.display = "block";
