@@ -10,35 +10,47 @@ function validate(event) {
     const confirm = document.querySelector("#confirm");
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+    const error = document.querySelector(".error");
     const errorList = document.querySelector(".error-list");
+
+    errorList.innerHTML = "";
+    error.style.display = "none";
+
+    let hasErrors = false;
+
     if(username.value.trim() === "") {
-        event.preventDefault();
         const errorItem = document.createElement("li");
         errorItem.textContent = "Username cannot be empty";
         errorList.appendChild(errorItem);
+        hasErrors = true;
     }
     if(email.value.trim() === "") {
-        event.preventDefault();
         const errorItem = document.createElement("li");
         errorItem.textContent = "Email cannot be empty";
         errorList.appendChild(errorItem);
+        hasErrors = true;
     }
     if(!emailPattern.test(email.value.trim())) {
-        event.preventDefault();
         const errorItem = document.createElement("li");
         errorItem.textContent = "Invalid Email";
         errorList.appendChild(errorItem);
+        hasErrors = true;
     }
     if(password.value.length < 6) {
-        event.preventDefault();
         const errorItem = document.createElement("li");
         errorItem.textContent = "Password must be greater than six characters";
         errorList.appendChild(errorItem);
+        hasErrors = true;
     }
     if(password.value !== confirm.value) {
-        event.preventDefault();
         const errorItem = document.createElement("li");
         errorItem.textContent = "Passwords don't match";
         errorList.appendChild(errorItem);
+        hasErrors = true;
+    }
+
+    if(hasErrors) {
+        event.preventDefault();
+        error.style.display = "block";
     }
 }

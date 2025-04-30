@@ -52,7 +52,8 @@
     margin-bottom: 24px;
     background-color: lightsalmon;
     border: solid 1px red;
-    position: relative; /* Make it the reference point for the button */
+    position: relative;
+    display: none;
 }
 
 .close-button {
