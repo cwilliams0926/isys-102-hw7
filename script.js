@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("#form");
     form.addEventListener("submit", validate);
+    const error = document.querySelector(".error");
+    const closeButton = document.querySelector(".close-button");
+    closeButton.addEventListener("click", () => {
+        error.style.display = "none";
+    });
 });
 
 function validate(event) {
