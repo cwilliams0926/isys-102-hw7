@@ -48,13 +48,40 @@
     cursor: pointer;
 }
 
-ul {
-    padding: 0;
-    margin: 0;
-}
-
 .error {
     margin-bottom: 24px;
     background-color: lightsalmon;
     border: solid 1px red;
+    position: relative; /* Make it the reference point for the button */
 }
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .close-button::before,
+  .close-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: darkred;
+    transform-origin: center;
+  }
+  
+  .close-button::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  .close-button::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
